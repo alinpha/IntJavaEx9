@@ -36,6 +36,79 @@ public class Generics {
         displayArrayList(foos);
         displayArrayList(integers);
         displayArrayList(strings);
+        
+        displayGenericList(foos);
+        displayGenericList(integers);
+        displayGenericList(strings);
+        
+        print("integers cleared");
+        displayGenericList(integers);
+        
+        generateIntArrayList(integers);
+        print("remove from integers by index");
+        integers.remove(1);
+        displayGenericList(integers);
+        
+        print("add the second item back in");
+        integers.add(1, 2);
+        displayGenericList(integers);
+        
+        integers.add(4);
+        displayGenericList(integers);
+        
+        print("does the foo list contain jim");
+        
+        boolean a = foos.contains(new Foo("Jim"));
+        
+        if (a) {
+            print("yes");
+        } else {
+            print("no");
+        }
+        
+        Foo forthFoo = new Foo("Uhura");
+        
+        print("does the foo list contain uhura");
+        
+        boolean b = foos.contains(forthFoo);
+        
+        if (a) {
+            print("yes");
+        } else {
+            print("no");
+        }
+        
+        integers.clear();
+        
+        if (integers.isEmpty()) {
+            print("the integers are empty");
+        }
+        
+        generateIntArrayList(integers);
+        
+        if (integers.isEmpty()) {
+            print("the integers are empty");
+        } else {
+            print("the integers are in place");
+        }
+        
+        foos.remove(forthFoo);
+        
+        foos.add(1, new Foo("boom"));
+        
+        displayGenericList(foos);
+    }
+    
+    static <T> void displayGenericList(List<T> list) {
+        
+        if (list.size() == 0) {
+            print("no items in collection");
+            return;
+        }
+        
+        for (T elm : list) {
+            print(elm.toString());
+        }
     }
     
     static void generateFoosArray(ArrayList<Foo> foos) {
